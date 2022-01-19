@@ -7,15 +7,15 @@ import Wrapper from "../Helpers/Wrapper";
 import ErrorModal from "../UI/ErrorModal";
 
 const AddUser = (props) => {
-  const nameInputRef = useRef()
-  const ageInputRef = useRef()
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
 
   const [error, setError] = useState();
 
   const addUserHandler = (event) => {
     event.preventDefault();
-    const enteredName = nameInputRef.current.value
-    const enteredUserAge = ageInputRef.current.value
+    const enteredName = nameInputRef.current.value;
+    const enteredUserAge = ageInputRef.current.value;
 
     if (enteredName.trim().length === 0 || enteredUserAge.trim().length === 0) {
       setError({
@@ -36,8 +36,8 @@ const AddUser = (props) => {
     console.log(enteredName, enteredUserAge);
     props.onAddUser(enteredName, enteredUserAge);
 
-    nameInputRef.current.value = ''
-    ageInputRef.current.value = ''
+    nameInputRef.current.value = "";
+    ageInputRef.current.value = "";
   };
 
   const clearErrorHandler = () => {
@@ -57,18 +57,10 @@ const AddUser = (props) => {
       <Card className={classes.input}>
         <form onSubmit={addUserHandler}>
           <label htmlFor="username">UserName</label>
-          <input
-            type="text"
-            id="username"
-            ref={nameInputRef}
-          />
+          <input type="text" id="username" ref={nameInputRef} />
 
           <label htmlFor="age">Age (years)</label>
-          <input
-            type="number"
-            id="age"
-            ref={ageInputRef}
-          />
+          <input type="number" id="age" ref={ageInputRef} />
 
           <Button type="submit">Add User</Button>
         </form>
